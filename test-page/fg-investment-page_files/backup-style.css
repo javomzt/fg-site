@@ -375,18 +375,7 @@ a:active {
 .main-navigation ul ul ul li:after{ position: absolute; top: 5px; left: 0px; content: "-"}
 .main-navigation ul ul ul li a{ padding-left: 15px!important;}
 
-#top-nav #site-navigation ul ul ul ul {
-    top: -0.1em;
-    width:100%;
-    border-top: none !important;
-	box-shadow: none !important;
 
-}
-
-.inner-page #top-nav #site-navigation ul ul ul ul a {
-    font-size: 12px !important;
-    color: #666;
-}
 
 .main-navigation ul ul a {
 	/*width: 200px;*/
@@ -777,7 +766,7 @@ div#tax_fg_north{float: none;clear: both; padding: 30px 0; font-size: 20px;displ
 }
 .wpml-ls-statics-shortcode_actions, .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu, .wpml-ls-statics-shortcode_actions a {
   border: none!important;}
-
+  
  .wpml-ls-statics-shortcode_actions .wpml-ls-current-language > a {
   background-color: transparent;
   color: #444444;
@@ -799,7 +788,7 @@ div#tax_fg_north{float: none;clear: both; padding: 30px 0; font-size: 20px;displ
   border-right: 1px solid #2a2a2a!important;;
   color: #2a2a2a !important;
   font-size: 12px !important;
-
+ 
 }
 .lang_right #lang_sel_list ul li:last-child a {
   border-right: medium none!important;
@@ -815,4 +804,4 @@ div#tax_fg_north{float: none;clear: both; padding: 30px 0; font-size: 20px;displ
 }
 .lang_right #lang_sel_list ul, #lang_sel_list li {
   margin: 0 !important;
-}
+} 
