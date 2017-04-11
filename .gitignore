@@ -3,3 +3,7 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
+/<!-- Button trigger modal -->
+/test-page/
+/test-page/fg-investment-page_files/
+/test-page/fg-investment-page.html
