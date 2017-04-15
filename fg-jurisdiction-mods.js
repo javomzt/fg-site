@@ -19,5 +19,5 @@ function hideMenuFr() {
     }
 
 function removeFundLinks() {
-        jQuery('a[class="jurisdictionSensitive"]').contents().unwrap();
-}
+    jQuery('a[class="jurisdictionSensitive"]').contents().unwrap();
+    }
