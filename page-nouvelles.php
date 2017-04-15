@@ -73,12 +73,12 @@ query_posts($args);
 
 			<script type="text/javascript">
 				jQuery(function($){
-					if(!isCookie('fg_performance_accepted')){
+					if(!isCookie('fg_accredited_canadian')){
 						$('#disclaimer_box_button').trigger('click');
 					}
 					$(document).on('click', '[data-dismiss="modal"]', function(){
 						// Create Cookie
-						setCookie('fg_performance_accepted', '<?php echo $post->ID; ?>', 1);
+						setCookie('fg_accredited_canadian', '<?php echo $post->ID; ?>', 1);
 						window.location.reload(true);
 					});
 				});

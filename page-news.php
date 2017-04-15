@@ -80,7 +80,7 @@ query_posts($args);
 
 				jQuery(function($){
 
-					if(!isCookie('fg_performance_accepted')){
+					if(!isCookie('fg_accredited_canadian')){
 
 						$('#disclaimer_box_button').trigger('click');
 
@@ -90,8 +90,7 @@ query_posts($args);
 
 						// Create Cookie
 
-						setCookie('fg_performance_accepted', '<?php echo $post->ID; ?>', 1);
-
+						setCookie('fg_accredited_canadian', '<?php echo $post->ID; ?>', 1);
 						window.location.reload(true);
 
 					});
