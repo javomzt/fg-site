@@ -21,3 +21,9 @@ function hideMenuFr() {
 function removeFundLinks() {
     jQuery('a[class="jurisdictionSensitive"]').contents().unwrap();
     }
+
+function setNonAccredited() {
+    //When the user selects non-accredited-canadian, set a cookie to validate when to hide the links and menu items.
+    setCookie('fg_non-accredited', '<?php echo $post->ID; ?>', 1);
+    return true;
+}
