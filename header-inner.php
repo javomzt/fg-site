@@ -227,6 +227,25 @@
 								<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 
 							</nav><!-- #site-navigation -->
+                            <!-- Jurisdiction cleanup menu -->
+
+                            <script type="text/javascript">
+                                jQuery(function($){
+                                    if(!isCookie('fg_non-accredited')){
+                                        //if the user is not accredited, remove menu links EN
+                                        $.document.getElementById('menu-item-3295').setAttribute("style", "display:none;");
+                                        $.document.getElementById('menu-item-3296').setAttribute("style", "display:none;");
+                                        $.document.getElementById('menu-item-16').setAttribute("style", "display:none;");
+
+                                        //if the user is not accredited, remove menu links FR
+                                        document.getElementById('menu-item-249').setAttribute("style", "display:none;");
+                                        document.getElementById('menu-item-3299').setAttribute("style", "display:none;");
+                                        document.getElementById('menu-item-3300').setAttribute("style", "display:none;");
+                                    }
+                                });
+                            </script>
+
+                            <!-- Jurisdiction cleanup menu -->
 
 						</div>
 
