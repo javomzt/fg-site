@@ -234,17 +234,9 @@
                                 //Call the hideMenuEn function after nav menu is loaded.
 
                                 jQuery(document).ready(function() {
-                                    //test set cookie first
-                                    console.log( "Test for cookie:" );
 
                                     if(isCookie('fg_non-accredited')){
                                         //if cookie set, then hide elements
-
-                                        console.log( "A cookie is there, lets remove the elements" );
-
-                                        //TODO: if lang == EN then hideMenuEn ; else hideMenuFr()
-
-                                        console.log('<?php echo constant("ICL_LANGUAGE_CODE"); ?>');
 
                                         <?php if ( ICL_LANGUAGE_CODE=='fr' ) : ?>
                                             hideMenuFr();
@@ -253,24 +245,17 @@
                                         <?php endif; ?>
 
                                         removeFundLinks();
-
                                     }
-                                        else {
-                                            console.log("Not the cookie")
-                                        }
 
                                 });
 
                                 function hideMenuEn() {
-
-                                    console.log( "Removing menu items." );
                                     //menu-item-3295 - US equity
                                     //menu-item-3296 - Asia Pacific equity
                                     //menu-item-16 - News
                                     document.getElementById('menu-item-3295').setAttribute("style", "display:none;");
                                     document.getElementById('menu-item-3296').setAttribute("style", "display:none;");
                                     document.getElementById('menu-item-16').setAttribute("style", "display:none;");
-                                    console.log( "Done with menu items, good job." );
                                 }
 
                                 function hideMenuFr() {
@@ -287,7 +272,6 @@
                                 }
 
                                 function getCookie(cname) {
-                                    console.log("getCookie looking for = " + cname );
                                     var name = cname + "=";
                                     var decodedCookie = decodeURIComponent(document.cookie);
                                         var ca = decodedCookie.split(';');
@@ -305,7 +289,6 @@
 
                                 function isCookie(cname) {
                                     var cn = getCookie(cname);
-                                    console.log( "isCookie looking for = "+ cname);
 
                                     if (cn != "") {
                                         console.log( "isCookie found your cookie!");
@@ -322,8 +305,6 @@
                                     d.setTime(d.getTime() + (exhours*60*60*	1000));
                                     var expires = "expires="+d.toUTCString();
                                     document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
-                                    console.log( "Ran set cookie for " + cname );
-
                                 }
 
                             </script>
