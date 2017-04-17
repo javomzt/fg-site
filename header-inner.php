@@ -227,24 +227,107 @@
 								<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 
 							</nav><!-- #site-navigation -->
-                            <!-- Jurisdiction cleanup menu ::
+
+                            <!-- Jurisdiction cleanup menu -->
 
                             <script type="text/javascript">
-                                jQuery(function($){
-                                    //currently not working as the isCookie funciton is only defined in the presence of a modal. We may need to remove the definition from the modal and have it int he header for the full site. then, why not use a jQuery equivalent?
-                                    if(!isCookie('fg_non-accredited')){
-                                        //if the user is not accredited, remove menu links EN
-                                        $.document.getElementById('menu-item-3295').setAttribute("style", "display:none;");
-                                        $.document.getElementById('menu-item-3296').setAttribute("style", "display:none;");
-                                        $.document.getElementById('menu-item-16').setAttribute("style", "display:none;");
+                                //Call the hideMenuEn function after nav menu is loaded.
 
-                                        //if the user is not accredited, remove menu links FR
-                                        document.getElementById('menu-item-249').setAttribute("style", "display:none;");
-                                        document.getElementById('menu-item-3299').setAttribute("style", "display:none;");
-                                        document.getElementById('menu-item-3300').setAttribute("style", "display:none;");
+                                jQuery(document).ready(function() {
+                                    //test set cookie first
+                                    console.log( "Test for cookie:" );
+
+                                    if(isCookie('fg_non-accredited')){
+                                        //if cookie set, then hide elements
+
+                                        console.log( "A cookie is there, lets remove the elements" );
+
+                                        //TODO: if lang == EN then hideMenuEn ; else hideMenuFr()
+
+                                        console.log('<?php echo constant("ICL_LANGUAGE_CODE"); ?>');
+
+                                        <?php if ( ICL_LANGUAGE_CODE=='fr' ) : ?>
+                                            hideMenuFr();
+                                        <?php else: ?>
+                                            hideMenuEn();
+                                        <?php endif; ?>
+
+                                        removeFundLinks();
+
                                     }
+                                        else {
+                                            console.log("Not the cookie")
+                                        }
+
                                 });
+
+                                function hideMenuEn() {
+
+                                    console.log( "Removing menu items." );
+                                    //menu-item-3295 - US equity
+                                    //menu-item-3296 - Asia Pacific equity
+                                    //menu-item-16 - News
+                                    document.getElementById('menu-item-3295').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-3296').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-16').setAttribute("style", "display:none;");
+                                    console.log( "Done with menu items, good job." );
+                                }
+
+                                function hideMenuFr() {
+                                    //menu-item-249 - nouvelles
+                                    // 3299 - US equity
+                                    // 3300 - Asia Pacific equity
+                                    document.getElementById('menu-item-249').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-3299').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-3300').setAttribute("style", "display:none;");
+                                }
+
+                                function removeFundLinks() {
+                                    jQuery('a[class="jurisdictionSensitive"]').contents().unwrap();
+                                }
+
+                                function getCookie(cname) {
+                                    console.log("getCookie looking for = " + cname );
+                                    var name = cname + "=";
+                                    var decodedCookie = decodeURIComponent(document.cookie);
+                                        var ca = decodedCookie.split(';');
+                                        for(var i = 0; i <ca.length; i++) {
+                                            var c = ca[i];
+                                            while (c.charAt(0) == ' ') {
+                                                c = c.substring(1);
+                                            }
+                                            if (c.indexOf(name) == 0) {
+                                                return c.substring(name.length, c.length);
+                                            }
+                                        }
+                                        return "";
+                                    }
+
+                                function isCookie(cname) {
+                                    var cn = getCookie(cname);
+                                    console.log( "isCookie looking for = "+ cname);
+
+                                    if (cn != "") {
+                                        console.log( "isCookie found your cookie!");
+                                        return true;
+                                    }
+                                    else{
+                                        console.log( "isCookie didnt find your cookie.");
+                                        return false;
+                                    }
+                                }
+
+                                function setCookie(cname, cvalue, exhours) {
+                                    var d = new Date();
+                                    d.setTime(d.getTime() + (exhours*60*60*	1000));
+                                    var expires = "expires="+d.toUTCString();
+                                    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
+                                    console.log( "Ran set cookie for " + cname );
+
+                                }
+
                             </script>
+
 
                             <!-- Jurisdiction cleanup menu -->
 

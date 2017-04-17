@@ -4,6 +4,15 @@ jQuery( $ ).ready(function() {
     hideMenuEn();
 });
 
+//check for languange
+
+if (lang="fr-FR"){
+    hideMenuFr();
+} else {
+    hideMenuEn();
+}
+
+
 function hideMenuEn() {
     console.log( "Removing menu items." );
     //menu-item-3295 - US equity
