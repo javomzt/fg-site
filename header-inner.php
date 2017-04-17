@@ -291,11 +291,11 @@
                                     var cn = getCookie(cname);
 
                                     if (cn != "") {
-                                        console.log( "isCookie found your cookie!");
+                                        //isCookie found your cookie.
                                         return true;
                                     }
                                     else{
-                                        console.log( "isCookie didnt find your cookie.");
+                                        //isCookie didnt find your cookie.
                                         return false;
                                     }
                                 }
