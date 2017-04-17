@@ -227,10 +227,11 @@
 								<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 
 							</nav><!-- #site-navigation -->
-                            <!-- Jurisdiction cleanup menu -->
+                            <!-- Jurisdiction cleanup menu ::
 
                             <script type="text/javascript">
                                 jQuery(function($){
+                                    //currently not working as the isCookie funciton is only defined in the presence of a modal. We may need to remove the definition from the modal and have it int he header for the full site. then, why not use a jQuery equivalent?
                                     if(!isCookie('fg_non-accredited')){
                                         //if the user is not accredited, remove menu links EN
                                         $.document.getElementById('menu-item-3295').setAttribute("style", "display:none;");
