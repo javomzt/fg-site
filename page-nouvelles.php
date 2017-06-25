@@ -54,7 +54,16 @@ query_posts($args);
 
         <button type="button" class="btn btn-primary" data-dismiss="modal" id=""><?php the_field('pop-up_accept_button_text'); ?></button>
 
-        <a type="button" class="btn btn-default" href="<?php echo do_shortcode(get_field('pop-up_cancel_button_url')); ?>"><?php the_field('pop-up_cancel_button_text'); ?></a>
+        <a type="button" class="btn btn-default" href="<?php echo do_shortcode(get_field('pop-up_cancel_button_url')); ?>" onclick="return setNonAccredited();"><?php the_field('pop-up_cancel_button_text'); ?></a>
+
+          <script type="text/javascript">
+              function setNonAccredited() {
+                  //When the user selects non-accredited-canadian, set a cookie to validate when to hide the links and menu items.
+                  setCookie('fg_non-accredited', '<?php echo $post->ID; ?>', 1);
+                  return true;
+              }
+
+          </script>
 
       </div>
 
@@ -73,12 +82,12 @@ query_posts($args);
 
 			<script type="text/javascript">
 				jQuery(function($){
-					if(!isCookie('fg_performance_accepted')){
+					if(!isCookie('fg_accredited_canadian')){
 						$('#disclaimer_box_button').trigger('click');
 					}
 					$(document).on('click', '[data-dismiss="modal"]', function(){
 						// Create Cookie
-						setCookie('fg_performance_accepted', '<?php echo $post->ID; ?>', 1);
+						setCookie('fg_accredited_canadian', '<?php echo $post->ID; ?>', 1);
 						window.location.reload(true);
 					});
 				});
