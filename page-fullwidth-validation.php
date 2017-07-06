@@ -1,0 +1,224 @@
+<?php
+/**
+ * The template for displaying Full Width pages with a validation message.
+ *
+ * Template Name: Full Width (with Validation)
+ *
+ * @package Seller
+ */
+
+get_header('inner'); ?>
+</div>
+
+<!-- JAV Validation code -->
+<!-- Legal Disclaimer -->
+
+<!-- Button trigger modal -->
+
+<button style="display:none;" id="disclaimer_box_button" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#disclaimer_box">
+
+  	Disclaimer Button
+
+</button>
+
+
+
+<!-- Modal -->
+
+<div data-keyboard="false" data-backdrop="static" class="modal fade" id="disclaimer_box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+
+        <h4 class="modal-title" id="myModalLabel"><?php the_field('pop-up_title'); ?></h4>
+
+      </div>
+
+      <div class="modal-body">
+
+      	<?php the_field('pop-up_content'); ?>
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id=""><?php the_field('pop-up_accept_button_text'); ?></button>
+
+        <a type="button" class="btn btn-default" href="<?php echo do_shortcode(get_field('pop-up_cancel_button_url')); ?>" onclick="return setNonAccredited();"><?php the_field('pop-up_cancel_button_text'); ?></a>
+
+          <script type="text/javascript">
+              function setNonAccredited() {
+                  //When the user selects non-accredited-canadian, set a cookie to validate when to hide the links and menu items.
+                  setCookie('fg_non-accredited', '<?php echo $post->ID; ?>', 1);
+                  return true;
+              }
+
+          </script>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Legal Disclaimer -->
+
+
+
+<?php
+
+	global $post;
+
+	if(get_field('show_pop-up')){
+
+		?>
+
+			<script type="text/javascript">
+
+				jQuery(function($){
+
+					if(!isCookie('fg_accredited_canadian')){
+
+						$('#disclaimer_box_button').trigger('click');
+
+					}
+
+					$(document).on('click', '[data-dismiss="modal"]', function(){
+
+						// Create Cookie
+
+						setCookie('fg_accredited_canadian', '<?php echo $post->ID; ?>', 1);
+						window.location.reload(true);
+
+					});
+
+				});
+
+
+
+				function setCookie(cname, cvalue, exhours) {
+
+				    var d = new Date();
+
+				    d.setTime(d.getTime() + (exhours*60*60*1000));
+
+				    var expires = "expires="+d.toUTCString();
+
+				    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
+
+				}
+
+
+
+				function getCookie(cname) {
+
+				    var name = cname + "=";
+
+				    var ca = document.cookie.split(';');
+
+				    for(var i=0; i<ca.length; i++) {
+
+				        var c = ca[i];
+
+				        while (c.charAt(0)==' ') c = c.substring(1);
+
+				        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+
+				    }
+
+				    return "";
+
+				}
+
+
+
+				function isCookie(cname) {
+
+				    var cn = getCookie(cname);
+
+				    if (cn != "") {
+
+				        return true;
+
+				    }
+
+				    else{
+
+				      	return false;
+
+				    }
+
+				}
+
+			</script>
+
+		<?php
+
+	}
+
+?>
+
+<!-- end Validation code -->
+
+
+
+<div>
+
+	<div id="primary-mono" class="content-area language_page">
+		<main id="main" class="site-main" role="main">
+
+			<?php echo do_shortcode( '[rev_slider full-width]' ); ?>
+
+						<!--<div class="page_full_image">
+							<?php if(has_post_thumbnail()) the_post_thumbnail(); ?>
+						</div>-->
+
+			<div class="container">
+
+						<!--<h1 class="entry-title"><?php the_title(); ?></h1>-->
+
+						<?php while ( have_posts() ) : the_post(); ?>
+
+							<?php get_template_part( 'content', 'page' ); ?>
+
+							<?php
+								// If comments are open or we have at least one comment, load up the comment template
+								/*if ( comments_open() || '0' != get_comments_number() ) :
+									comments_template();
+								endif;*/
+							?>
+
+						<?php endwhile; // end of the loop. ?>
+			</div>
+
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<?php /*if(strstr($_SERVER['REQUEST_URI'], '/fr/')){ ?>
+        <div class="newsletter_section">
+            <div class="container">
+        	<?php if ( is_active_sidebar( 'footer-6-fr' ) ) : ?>
+            	<?php dynamic_sidebar( 'footer-6-fr' ); ?>
+        	<?php endif; ?>
+            </div>
+        </div>
+        <?php }else{ ?>
+
+        <div class="newsletter_section">
+            <div class="container">
+                <?php if ( is_active_sidebar( 'footer-6' ) ) : ?>
+                    <?php dynamic_sidebar( 'footer-6' ); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php }*/ ?>
+
+<?php get_footer(); ?>

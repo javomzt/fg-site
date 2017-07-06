@@ -541,7 +541,7 @@
 
 					<?php }else{ ?>
 
-							<div class="inner_title"><span style="background:transparent"><?php echo get_field('title_on_image'); ?></span></div>
+							<div class="inner_title"><span><?php echo get_field('title_on_image'); ?></span></div>
 
 						<?php } ?>
 
