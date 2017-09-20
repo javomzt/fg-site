@@ -1,7 +1,7 @@
 <?php
 
 
-get_header('inner'); 
+get_header('inner');
 echo do_shortcode('[rev_slider news-slider]');
 
 
@@ -75,102 +75,55 @@ query_posts($args);
 
 <!-- Legal Disclaimer -->
 
-
-
 <?php
-
 	global $post;
-
 	if(get_field('show_pop-up')){
-
 		?>
 
 			<script type="text/javascript">
-
 				jQuery(function($){
-
 					if(!isCookie('fg_accredited_canadian')){
-
 						$('#disclaimer_box_button').trigger('click');
-
 					}
-
 					$(document).on('click', '[data-dismiss="modal"]', function(){
-
 						// Create Cookie
-
 						setCookie('fg_accredited_canadian', '<?php echo $post->ID; ?>', 1);
 						window.location.reload(true);
-
 					});
-
 				});
 
-
-
 				function setCookie(cname, cvalue, exhours) {
-
 				    var d = new Date();
-
 				    d.setTime(d.getTime() + (exhours*60*60*1000));
-
 				    var expires = "expires="+d.toUTCString();
-
 				    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
-
 				}
-
-
 
 				function getCookie(cname) {
-
 				    var name = cname + "=";
-
 				    var ca = document.cookie.split(';');
-
 				    for(var i=0; i<ca.length; i++) {
-
 				        var c = ca[i];
-
 				        while (c.charAt(0)==' ') c = c.substring(1);
-
 				        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-
 				    }
-
 				    return "";
-
 				}
-
-
 
 				function isCookie(cname) {
-
 				    var cn = getCookie(cname);
-
 				    if (cn != "") {
-
 				        return true;
-
 				    }
-
 				    else{
-
 				      	return false;
-
 				    }
-
 				}
-
 			</script>
-
 		<?php
-
 	}
-
 ?>
-
-<!-- -->
+<!-- JAV modal -->
 
 </div>
 <div class="news_page">
@@ -181,16 +134,16 @@ query_posts($args);
 					<div class="news_content">
 					<?php if ( have_posts() ) : ?>
 						<?php while ( have_posts() ) : the_post(); ?>
-							<?php	
-								if (isset($option_setting['logo'])) : 
+							<?php
+								if (isset($option_setting['logo'])) :
 									get_template_part( 'content', 'grid3' );
 								else :
-									get_template_part( 'defaults/content', 'grid3-d' );	
+									get_template_part( 'defaults/content', 'grid3-d' );
 								endif;
-								
+
 								$count++;
 							?>
-							<?php endwhile; ?>			
+							<?php endwhile; ?>
 							<?php seller_pagination(); ?>
 						<?php else : ?>
 							<?php get_template_part( 'content', 'none' ); ?>
@@ -203,7 +156,7 @@ query_posts($args);
 				</div><!-- #news_page -->
 			</div><!-- container -->
 		</main><!-- #main -->
-	</div><!-- #primary --> 
+	</div><!-- #primary -->
 
 <?php /*if(strstr($_SERVER['REQUEST_URI'], '/fr/')){ ?>
 <div class="newsletter_section">
@@ -225,5 +178,5 @@ query_posts($args);
 
 <?php /*if ( is_active_sidebar( 'footer-6' ) ) : ?>
     <p><?php dynamic_sidebar( 'footer-6' ); ?></p>
-<?php endif;*/ ?>	
+<?php endif;*/ ?>
 <?php get_footer(); ?>

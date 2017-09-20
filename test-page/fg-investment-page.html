@@ -373,6 +373,82 @@ li {font-size:16px;}
 <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a href="http://www.formulagrowth.com/contact/">CONTACT</a></li>
 </ul></div>
 							</nav><!-- #site-navigation -->	
+                            <script type="text/javascript">
+                                //Call the hideMenuEn function after nav menu is loaded.
+
+                                jQuery(document).ready(function() {
+                                    //test set cookie first
+                                    console.log( "Test for cookie" );
+
+                                    //setCookie('fg_non-accredited', 'test', 1);
+
+                                    if(isCookie('fg_non-accredited')){
+                                        //if cookie set, then hide elements
+                                        console.log( "A cookie is there" );
+                                        hideMenuEn();
+                                        //TODO: if lang == EN then hideMenuEn
+                                        //else hideMenuFr()
+                                    }
+                                        else {
+                                            console.log("Not the cookie")
+                                        }
+
+                                });
+
+                                function hideMenuEn() {
+
+                                    console.log( "Removing menu items." );
+                                    //menu-item-3295 - US equity
+                                    //menu-item-3296 - Asia Pacific equity
+                                    //menu-item-16 - News
+                                    document.getElementById('menu-item-3295').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-3296').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-16').setAttribute("style", "display:none;");
+                                    console.log( "Done with menu items, good job." );
+                                }
+
+                                function getCookie(cname) {
+                                    console.log("getCookie looking for = " + cname );
+                                    var name = cname + "=";
+                                    var decodedCookie = decodeURIComponent(document.cookie);
+                                        var ca = decodedCookie.split(';');
+                                        for(var i = 0; i <ca.length; i++) {
+                                            var c = ca[i];
+                                            while (c.charAt(0) == ' ') {
+                                                c = c.substring(1);
+                                            }
+                                            if (c.indexOf(name) == 0) {
+                                                return c.substring(name.length, c.length);
+                                            }
+                                        }
+                                        return "";
+                                    }
+
+                                function isCookie(cname) {
+                                    var cn = getCookie(cname);
+                                    console.log( "isCookie looking for = "+ cname);
+
+                                    if (cn != "") {
+                                        console.log( "isCookie found your cookie!");
+                                        return true;
+                                    }
+                                    else{
+                                        console.log( "isCookie didnt find your cookie.");
+                                        return false;
+                                    }
+                                }
+
+                                function setCookie(cname, cvalue, exhours) {
+                                    var d = new Date();
+                                    d.setTime(d.getTime() + (exhours*60*60*	1000));
+                                    var expires = "expires="+d.toUTCString();
+                                    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
+                                    console.log( "Ran set cookie for " + cname );
+
+                                }
+
+                            </script>
+
 
 						</div>			
 
