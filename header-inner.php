@@ -256,6 +256,8 @@
                                     document.getElementById('menu-item-3295').setAttribute("style", "display:none;");
                                     document.getElementById('menu-item-3296').setAttribute("style", "display:none;");
                                     document.getElementById('menu-item-16').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-3613').setAttribute("style", "display:none;");
+
                                 }
 
                                 function hideMenuFr() {
@@ -265,6 +267,7 @@
                                     document.getElementById('menu-item-249').setAttribute("style", "display:none;");
                                     document.getElementById('menu-item-3299').setAttribute("style", "display:none;");
                                     document.getElementById('menu-item-3300').setAttribute("style", "display:none;");
+                                    document.getElementById('menu-item-3614').setAttribute("style", "display:none;");
                                 }
 
                                 function removeFundLinks() {
@@ -539,11 +542,14 @@
 						?>
 							<div class="inner_title"><span><?php echo $term->name;//echo get_category(get_query_var('cat'))->name; ?></span></div>
 
-					<?php }else{ ?>
+                    <?php }
 
-							<div class="inner_title"><span><?php echo get_field('title_on_image'); ?></span></div>
+                        // hiding if title_on_image is empty
+                        elseif (get_field('title_on_image')) { ?>
 
-						<?php } ?>
+                            <div class="inner_title"><span><?php echo get_field('title_on_image'); ?></span></div>
+
+				    <?php } ?>
 
 
 
