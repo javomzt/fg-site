@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Template for displaying all single posts.
  *
@@ -15,6 +16,7 @@ get_header('inner'); ?>
   	Disclaimer Button
 
 </button>
+
 
 <!-- Modal -->
 
@@ -35,6 +37,7 @@ get_header('inner'); ?>
 <div data-keyboard="false" data-backdrop="static" class="modal fade <?php echo $in; ?>" id="disclaimer_box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" <?php echo $area_hidden; ?> style="<?php echo $style; ?>">
 
   <div class="modal-dialog" role="document">
+
     <div class="modal-content">
       <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel"><?php the_field('pop-up_title'); ?></h4>
@@ -71,6 +74,7 @@ get_header('inner'); ?>
 <script>
 
 	function PrintElem(elem)
+
     {
 		   Popup(jQuery(elem).html());
     }
@@ -95,6 +99,7 @@ get_header('inner'); ?>
 <?php
 
 	if(has_post_thumbnail()){
+
 		$thumb_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
 		if(!empty($thumb_image)){
 			?>
@@ -102,11 +107,14 @@ get_header('inner'); ?>
 
 			<?php
 		}
+
+    
 	}
 
 
 
 	if((get_the_ID() == 540) || (get_the_ID() == 542)){
+
 		$cat_id = 60;
 	}else if((get_the_ID() == 536) || (get_the_ID() == 538)){
 		$cat_id = 61;
@@ -139,6 +147,7 @@ get_header('inner'); ?>
 							<a class="btn btn-default viewmore dwnld_pdf" target="_blank" href="<?php the_field('download_pdf_file');  ?>"><?php the_field('download_pdf_button_text');  ?></a>
 
 							<!--<button onclick="PrintElem('#investment-fund-print')" class="btn btn-default viewmore dwnld_pdf"><i class="fa fa-print"></i></button>-->
+
 
 				    </div>
 					<div class="profile-box">
@@ -275,6 +284,7 @@ get_header('inner'); ?>
 				                    </div>
 
 					                <?php } ?>
+
 									<?php
 									if($i%2 == 0){ echo '</div><div class="profile-pic clearfix setcol">'; }
 								} ?>
@@ -299,6 +309,7 @@ get_header('inner'); ?>
 					                        		<?php if($i==9){ $news_sec = 'news_sec';}else{$news_sec = '';}?>
 
 					                        		<div class="<?php echo $news_sec ?>"><?php the_field('tab_'.$i.'_content'); ?></div>
+
 					                        	</div>
 				                        	</div>
 			                    	</div>
@@ -321,6 +332,7 @@ get_header('inner'); ?>
 					                        	<div class="profiletext">
 
 					                        		<!--<h1 class="text-left"><?php the_field('tab_'.$i.'_title');  ?></h1>-->
+
 
 					                        		<div class=""><?php the_field('tab_10_content'); ?></div>
 
@@ -432,12 +444,14 @@ get_header('inner'); ?>
 	            </div> -->
 
 	        <?php //} ?>
+
 		</main>
 	</div>
 
 <?php endif; ?>
 
 <!-- endif for div  -->
+
 
 
 <?php
@@ -512,6 +526,7 @@ jQuery(document).ready(function(){
 		if((jQuery('.quarterly_reports_8 .pdf_list').eq(0).find('a').attr('href')).length !== 0){
 
 			jQuery('a.dwnld_pdf').attr('href', (jQuery('.quarterly_reports_8 .pdf_list').eq(0).find('a').attr('href')));
+<
 		}
 	}*/
 });
